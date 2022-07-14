@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <nav class="pull-left">
+      <ul>
+        <li>
+          <a routerLink="/clientes"> Clientes </a>
+        </li>
+        <li>
+          <a routerLink="/create-cliente"> Guardar Cliente </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright pull-right">
+      &copy;
+      {{ test | date: "yyyy" }}, made by
+      <a routerLink="/clientes" target="_blank">Serg</a>.
+    </div>
+  </div>
+</footer>

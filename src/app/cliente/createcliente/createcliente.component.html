@@ -1,0 +1,154 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-7">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Crear o modificar Cliente</h4>
+            <p class="card-category">Completa la información del cliente:</p>
+          </div>
+          <div class="card-body" *ngIf="cliente">
+            <form #clienteForm="ngForm" (ngSubmit)="onSubmit(clienteForm)">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="Nombres completos"
+                      #nombres="ngModel"
+                      [(ngModel)]="cliente.nombres"
+                      required
+                      placeholder="Nombres completos"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="nombres.touched && !nombres.valid"
+                  >
+                    Campo Requerido nombres completos.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="telefono"
+                      #telefono="ngModel"
+                      [(ngModel)]="cliente.telefono"
+                      required
+                      placeholder="Telefono"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="telefono.touched && !telefono.valid"
+                  >
+                    Campo Requerido telefono.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="Fecha nacimiento"
+                      #fecha="ngModel"
+                      [(ngModel)]="cliente.fecha"
+                      required
+                      placeholder="Fecha nacimiento"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="fecha.touched && !fecha.valid"
+                  >
+                    Campo Requerido Fecha nacimiento.
+                  </span>
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="direccion"
+                      #direccion="ngModel"
+                      [(ngModel)]="cliente.direccion"
+                      required
+                      placeholder="Direccion"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="direccion.touched && !direccion.valid"
+                  >
+                    Campo Requerido direccion.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="correo"
+                      #correo="ngModel"
+                      [(ngModel)]="cliente.correo"
+                      required
+                      placeholder="correo"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="correo.touched && !correo.valid"
+                  >
+                    Campo Requerido correo.
+                  </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="message success" *ngIf="status == 'success'">
+                    <h4>
+                      Ha funcionado correctamente
+
+                      <a [routerLink]="['/clientes']" style="color: #078fff">
+                        <b>ver lista de clientes</b>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div
+                    class="message failed"
+                    *ngIf="status == 'failed'"
+                    style="font-size: 23px; color: #5a2fd0"
+                  >
+                    Cliente no pudo ser creado
+                  </div>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    value="Enviar"
+                    style="width: 100% !important"
+                    [disabled]="!clienteForm.form.valid"
+                    class="d-block btn btn-outline-light"
+                  >
+                    Enviar Cliente
+                  </button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

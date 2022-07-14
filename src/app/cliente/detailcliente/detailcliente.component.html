@@ -1,0 +1,90 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-danger" *ngIf="cliente">
+            <h4 class="card-title">
+              {{ cliente.nombres }}
+            </h4>
+          </div>
+          <div class="card-body" *ngIf="cliente">
+            <div class="row">
+              <div class="col-md-6">
+                <span>Número de Telefono:</span>
+                <p class="description">{{ cliente.telefono }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Fecha de nacimiento:</span>
+                <p class="description">{{ cliente.fecha }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Dirección:</span>
+                <p class="description">{{ cliente.direccion }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Correo Electronico:</span>
+                <p class="description">{{ cliente.correo }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Creado:</span>
+                <p class="description">
+                  {{ cliente.datetimeCreated }}
+                </p>
+              </div>
+            </div>
+            <div
+              class="btn-group-detail mt-2 mb-4"
+              role="group"
+              aria-label="actionButtons"
+            >
+              <a
+                class="d-block btn btn-outline-light"
+                [routerLink]="['/clientes']"
+                [routerLinkActive]="['actived']"
+                >Volver al listado de clientes</a
+              >
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p *ngIf="confirm == false">
+                  <button
+                    [routerLink]="['/editcliente', cliente.idcliente]"
+                    type="button"
+                    class="d-block btn btn-light"
+                  >
+                    Editar cliente {{ cliente.nombres }}
+                  </button>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <button
+                  (click)="setConfirm(true)"
+                  class="d-block btn btn-light"
+                >
+                  Borrar cliente {{ cliente.nombres }}
+                </button>
+                <p *ngIf="confirm == true">
+                  <span>¿Estas seguro de eliminar cliente?</span>
+                  <br />
+                  <button (click)="setConfirm(false)" class="btn btn-secondary">
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    *ngIf="cliente"
+                    (click)="deleteCliente(cliente.idcliente)"
+                  >
+                    Eliminar Definitivo
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
